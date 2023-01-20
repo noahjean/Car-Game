@@ -4,8 +4,14 @@
 	gap: 1rem;
 	grid-template-rows: repeat(5, 1fr);
 }
+
 .space {
 	background-color: rgba(128,128,128,.6);
+	border: solid black 1px;
+}
+
+.obstacle {
+	background-color: rgba(118,118,118,.7);
 	border: solid black 1px;
 }
 
@@ -13,7 +19,9 @@
 	background-color: gray;
 	border: solid black 1px;
 	grid-column: 3;
+	grid-row: 5;
 }
+
 p {
 	font-size: 48px;
 	text-align: center;

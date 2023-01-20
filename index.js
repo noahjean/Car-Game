@@ -1,31 +1,60 @@
-spot = 3
+carspot = 3
 
 let e = document.body
 e.addEventListener('keydown', arrows)
 
+let obstacleTime = window.setInterval(function(){createObstacle()}, 5000);
+let moveTime = window.setInterval(function(){moveObstacle()}, 1000);
 
 function arrows(){
 	const key = event.key;
 	car = document.getElementById('car')
 
 	if(key === 'ArrowLeft'){
-		if(spot === 1){
-			spot = 5
-			car.style.gridColumn = spot
+		if(carspot === 1){
+			carspot = 5
+			car.style.gridColumn = carspot
 		}
 		else{
-			spot -= 1
-			car.style.gridColumn = spot
+			carspot -= 1
+			car.style.gridColumn = carspot
 		}
 	}
 	if(key === 'ArrowRight'){
-		if(spot === 5){
-			spot = 1
-			car.style.gridColumn = spot
+		if(carspot === 5){
+			carspot = 1
+			car.style.gridColumn = carspot
 		}
 		else{
-			spot += 1
-			car.style.gridColumn = spot
+			carspot += 1
+			car.style.gridColumn = carspot
 		}
 	}
+}
+
+
+function createObstacle(){
+	spot = Math.floor((Math.random()*5)+1)
+	console.log(spot)
+	let Div = document.createElement('div')
+	Div.className = 'obstacle'
+	let word = document.createElement('p')
+	word.textContent = 'Obstacle!'
+	Div.append(word)
+	g = document.getElementById('road')
+	g.prepend(Div)
+	Div.style.gridColumn = spot
+	Div.style.gridRow = 1
+}
+
+function moveObstacle(){
+	Obstacle = document.getElementsByClassName('obstacle')
+	console.log(Obstacle)
+	for(value of Obstacle){
+		spot = parseInt(value.style.gridRow[0])
+		if(spot === 5){
+			value.remove()
+		}
+		value.style.gridRow = spot + 1
+	 }
 }
