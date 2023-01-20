@@ -1,20 +1,31 @@
+spot = 3
+
 let e = document.body
-console.log(e)
-	e.addEventListener('keydown', arrows)
+e.addEventListener('keydown', arrows)
 
 
 function arrows(){
 	const key = event.key;
 	car = document.getElementById('car')
-	spot = car.style.gridColumn[0]
-	console.log(spot)
 
 	if(key === 'ArrowLeft'){
-		console.log('hi')
-		car.style.gridColumn = 1
+		if(spot === 1){
+			spot = 5
+			car.style.gridColumn = spot
+		}
+		else{
+			spot -= 1
+			car.style.gridColumn = spot
+		}
 	}
 	if(key === 'ArrowRight'){
-		console.log('bye')
-		car.style.gridColumn = 3
+		if(spot === 5){
+			spot = 1
+			car.style.gridColumn = spot
+		}
+		else{
+			spot += 1
+			car.style.gridColumn = spot
+		}
 	}
 }
