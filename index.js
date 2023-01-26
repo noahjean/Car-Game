@@ -52,9 +52,19 @@ function moveObstacle(){
 	console.log(Obstacle)
 	for(value of Obstacle){
 		spot = parseInt(value.style.gridRow[0])
+		colspot = parseInt(value.style.gridColumn[0])
 		if(spot === 5){
 			value.remove()
 		}
 		value.style.gridRow = spot + 1
+		if(spot===carspot && colspot===carspot){
+			console.log('game over!')
+			gameOver()
+		}
 	 }
+}
+
+function gameOver(){
+	window.location.replace('gameover.html')
+	console.log('function called')
 }
